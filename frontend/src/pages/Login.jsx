@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import useLogin from "../hooks/userLogin";
 
 const Login = () => {
+
+  const [username,setUsername] = useState("");
+  const [password,setPassword] = useState("");
+  
+  const {loading,login} = useLogin()
+
+
+  const handleSubmit = async (e) =>{
+    e.preventDefault();
+    await login(username,password)
+  }
+
+
   return (
+   
     <div className="flex items-center justify-center w-full max-w-md p-8 bg-gray-900 rounded-lg shadow-lg">
       <div className="w-full">
         <h1 className="text-4xl font-semibold text-center text-gray-300 mb-8">
           Login to <span className="text-blue-500">ChatApp</span>
         </h1>
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label className="block text-lg font-medium text-gray-300">
               Username
@@ -16,6 +31,8 @@ const Login = () => {
             <input
               type="text"
               placeholder="Enter username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="mt-2 block w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -26,6 +43,8 @@ const Login = () => {
             <input
               type="password"
               placeholder="Enter Password"
+              value={password}
+              onChange={(e)=> setPassword(e.target.value)}
               className="mt-2 block w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -38,8 +57,10 @@ const Login = () => {
             </Link>
           </div>
           <div>
-            <button className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500">
-              Login
+            <button className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={loading}
+            >
+              {loading ? <span className="loading loading-spinner"></span> : "Login"}
             </button>
           </div>
         </form>

@@ -96,8 +96,10 @@ const SignUp = () => {
         </Link>
 
         <div>
-          <button className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500">
-            Sign Up
+          <button className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
+          disabled={loading}
+          >
+          {loading ? <span className="loading loading-spinner"></span>:"Sign Up"}
           </button>
         </div>
       </form>
