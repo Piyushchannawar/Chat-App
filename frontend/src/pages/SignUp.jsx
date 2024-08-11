@@ -40,7 +40,7 @@ const SignUp = () => {
           </label>
           <input
             type="text"
-            placeholder="John Doe"
+            placeholder="Piyush Channawar"
             value={inputs.fullname}
             onChange={(e) => setInput({ ...inputs, fullname: e.target.value})}
             className="mt-2 block w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -53,7 +53,7 @@ const SignUp = () => {
           </label>
           <input
             type="text"
-            placeholder="johndoe"
+            placeholder="Piyush"
             value={inputs.username}
             onChange={(e) => setInput({ ...inputs, username: e.target.value})}
             className="mt-2 block w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
